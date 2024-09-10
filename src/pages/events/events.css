@@ -1,0 +1,64 @@
+.app-container {
+    display: flex;
+}
+  
+.left-panel {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ffffff;
+}
+  
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+}
+  
+.right-panel-header {
+    margin-bottom: 40px;
+    color: #a62639;
+    font-weight: bold;
+    font-size: 24px;
+}
+  
+.event-cover {
+    width: 100%;
+    max-width: 750px;
+    margin-bottom: 40px;
+}
+  
+.calender-event-content {
+    color: white;
+    white-space: normal;
+}
+
+.rbc-toolbar {
+    padding: 10px;
+}
+  
+.rbc-toolbar-label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #a62639;
+}
+  
+.rbc-header {
+    color: #a62639;
+}
+  
+.rbc-date-cell {
+    text-align: center;
+    padding: 5px;
+}
+  
+.rbc-day-bg:hover {
+    background-color: #f7f7f7;
+}
