@@ -4,6 +4,7 @@ import img1 from './about_imgs/group_photo.jpg';
 import img2 from './about_imgs/cssa_logo.jpg';
 import img3 from './about_imgs/president.jpg';
 import img4 from './about_imgs/contact.jpg';
+import img5 from './about_imgs/contact_logo.png';
 
 
 
@@ -59,8 +60,9 @@ const About = () => {
       <section className="contact-section">
         <div className="contact-content">
           {/* <img className="contact" src={img3} alt="记录照片" /> */}
-          <h2>联系方式</h2>
-          <p>请在此处填写您的联系方式或相关内容。</p>
+          <img className="contact-image" src={img4} alt="海报" />
+          {/* <h2></h2>
+          <p>请在此处填写您的联系方式或相关内容。</p> */}
         </div>
       </section>
     </div>

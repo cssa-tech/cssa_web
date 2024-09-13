@@ -125,12 +125,18 @@
 
   .contact-section {
     min-height: 50vh;
-    background-color: #333;
+    background-color: #ebecd9;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+
+  .contact-image {
+    left: 10px;
+    top: 10px;
+
   }
   
   .contact-content h2 {
