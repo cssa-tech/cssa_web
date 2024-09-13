@@ -4,7 +4,7 @@ import img1 from './about_imgs/group_photo.jpg';
 import img2 from './about_imgs/cssa_logo.jpg';
 import img3 from './about_imgs/president.jpg';
 import img4 from './about_imgs/contact.jpg';
-import img5 from './about_imgs/contact_logo.png';
+import img5 from './about_imgs/contact_logo2.png';
 
 
 
@@ -56,13 +56,15 @@ const About = () => {
       <h2>2024 CSSA主席团</h2>
       </section>
 
+      <section className="blank-section"></section>
+
       {/* 联系方式部分 */}
       <section className="contact-section">
         <div className="contact-content">
           {/* <img className="contact" src={img3} alt="记录照片" /> */}
-          <img className="contact-image" src={img4} alt="海报" />
-          {/* <h2></h2>
-          <p>请在此处填写您的联系方式或相关内容。</p> */}
+          <img className="contact-image" src={img5} alt="海报" />
+          <h2>   </h2>
+          <p>Contact us: uiuccssaprad@gmail.com</p>
         </div>
       </section>
     </div>

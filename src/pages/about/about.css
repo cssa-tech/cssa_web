@@ -123,6 +123,11 @@
     display: flex;
   }
 
+  .blank-section {
+    height: 50px;
+    background-color: #ebecd9;
+  }
+
   .contact-section {
     min-height: 50vh;
     background-color: #ebecd9;
@@ -136,6 +141,8 @@
   .contact-image {
     left: 10px;
     top: 10px;
+    width: 60%;
+    height: 80%;
 
   }
   
@@ -146,6 +153,10 @@
   
   .contact-content p {
     font-size: 1.2rem;
+    margin-bottom: 20px;
+    color:#112461;
+    font-weight: bold; 
+    font-weight: 700; 
   }
   
 
