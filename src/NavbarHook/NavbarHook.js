@@ -61,7 +61,7 @@ const NavbarHook = () => {
                 department 2
               </NavLink>
               <NavLink to="/business" className="dropdown-item" onClick={closeDropdown}>
-                department 3
+                商业部
               </NavLink>
             </div>
           </div>
