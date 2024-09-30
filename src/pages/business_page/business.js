@@ -43,8 +43,8 @@ const Business = () => {
         </div>
       </section>
 
-      <section className="leader-section">
-        <div className="leader-text">
+      <section className="b-leader-section">
+        <div className="b-leader-text">
           <h1>部长介绍</h1>
           {/* 加入部长信息 */}
           <p>加入部长照片和介绍</p>

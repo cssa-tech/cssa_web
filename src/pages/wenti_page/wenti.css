@@ -1,10 +1,10 @@
 /* 全局样式 */
-.business-page {
+.wenti-page {
     width: 100%;
     overflow-x: hidden;
   }
   
-  business-section {
+  wenti-section {
     position: relative;
     width: 100%;
     display: flex;
@@ -15,14 +15,14 @@
   }
   
   /* 海报部分 */
-  .business-title-section {
+  .wenti-title-section {
     position: relative;
     height: 80vh;
     background-color: #ffffff;
     /* overflow: hidden; */
   }
   
-  .business-title-image {
+  .wenti-title-image {
     width: 50pc;
     height: 30pc;
     object-fit: cover;
@@ -32,7 +32,7 @@
     border-radius: 2pc;
   }
   
-  .business-logo-image {
+  .wenti-logo-image {
     position: absolute;
     top: 40px;
     left: 40px;
@@ -40,14 +40,14 @@
     height: auto;
   }
   
-  .business-title-text {
+  .wenti-title-text {
     position: relative;
     color: rgb(211, 46, 46);
     z-index: 1;
     margin: 9pc;
   }
   
-  .business-title-text h1 {
+  .wenti-title-text h1 {
     font-size: 5rem;
     margin-bottom: 10px;
     text-shadow: 
@@ -57,7 +57,7 @@
     4px 4px 0 #fff; 
   }
   
-  .business-title-text p {
+  .wenti-title-text p {
     font-size: 2rem;
     margin-bottom: 400px;
     font-weight: bold; /* 加粗 */
@@ -69,9 +69,35 @@
     1px 1px 0 #fff; 
     
   }
+
+
+  .wenti-activity-image-container {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .wenti-activity-image-vertical {
+    margin: 2px;
+    /* left: 10px; */
+    /* top: 10px; */
+    width: 20pc;
+    height: 30pc;
+    border-radius: 2px;
+  }
   
+  .wenti-activity-image-horizontal {
+    margin: 2px;
+    /* left: 10px; */
+    /* top: 10px; */
+    width: 30pc;
+    height: 20pc;
+    border-radius: 2px;
+  }
+
   /* 文字介绍部分 */
-  .business-text-section {
+  .wenti-text-section {
     min-height: 90vh;
     background-color: #ebecd9;
     color: white;
@@ -81,22 +107,34 @@
     align-items: center;
     flex-direction: column;
   }
-  
-  .business-text-content h2 {
+
+  .wenti-text-content h2 {
     font-size: 4rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   
-  .business-text-content p {
+  .wenti-text-content p {
     max-width: 800px;
     font-size: 1.2rem;
     line-height: 1.8;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     font-weight: bold; /* 加粗 */
     font-weight: 700; 
+    margin-top: 30px;
   }
 
-  .business-text2-section {
+  .wenti-text-content h3 {
+    /* max-width: 800px; */
+    font-size: 1.5rem;
+    line-height: 1.8;
+    /* margin-bottom: 30px; */
+    font-weight: bold; /* 加粗 */
+    font-weight: 700; 
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .wenti-text2-section {
     position: relative;
     height: 80vh;
     background-color: #b94242;
@@ -104,7 +142,7 @@
   }
   
   /* 部长介绍部分 */
-  .b-leader-section {
+  .wt-leader-section {
     background-color: #faf9f9;
     height: 80vh;
     display: flex;
@@ -112,27 +150,27 @@
     align-items: center;
   }
 
-  .b-leader-text {
+  .wt-leader-text {
     position: relative;
     color: rgb(211, 46, 46);
     z-index: 1;
     margin: 9pc;
   }
   
-  .b-leader-image {
+  .wt-leader-image {
     width: 70%;
     height: auto;
     box-shadow: 0 5px 20px rgba(235, 234, 234, 0.3);
     bottom:0;
   }
   
-  .b-leader-section-down {
+  .wt-leader-section-down {
     background-color: #faf9f9;
     height: 10vh;
     display: flex;
   }
 
-  .b-leader-section-down h2{
+  .wt-leader-section-down h2{
     color: #000;
     justify-content: center;
     align-items: center;
@@ -142,7 +180,7 @@
   
 
   /* 联系部分 */
-  .business-contact-section {
+  .wenti-contact-section {
     min-height: 50vh;
     background-color: #f0f0f0;
     color: rgb(81, 81, 81);
@@ -152,7 +190,7 @@
     flex-direction: column;
   }
 
-  .business-contact-image {
+  .wenti-contact-image {
     left: 10px;
     top: 10px;
     width: 20%;
@@ -160,12 +198,12 @@
 
   }
   
-  .business-contact-content h2 {
+  .wenti-contact-content h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
   
-  .business-contact-content p {
+  .wenti-contact-content p {
     margin-top: 20px;
     font-size: 0.8rem;
     margin-bottom: 20px;
