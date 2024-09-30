@@ -35,8 +35,18 @@
     margin-bottom: 40px;
 }
   
+.rbc-agenda-date-cell {
+    color: #a62639;
+    white-space: normal;
+}
+
+.rbc-agenda-time-cell {
+    color: #a62639;
+    white-space: normal;
+}
+
 .calender-event-content {
-    color: white;
+    color: #a62639;
     white-space: normal;
 }
 
