@@ -55,13 +55,34 @@ const NavbarHook = () => {
 
             <div className="dropdown-menu">
               <NavLink to="/shiwu" className="dropdown-item" onClick={closeDropdown}>
-                department 1 
+                事务部 
               </NavLink>
               <NavLink to="/media" className="dropdown-item" onClick={closeDropdown}>
-                department 2
+                传媒部
               </NavLink>
               <NavLink to="/business" className="dropdown-item" onClick={closeDropdown}>
-                department 3
+                商业部
+              </NavLink>
+              <NavLink to="/hr" className="dropdown-item" onClick={closeDropdown}>
+                人力资源部
+              </NavLink>
+              <NavLink to="/wenti" className="dropdown-item" onClick={closeDropdown}>
+                文体部
+              </NavLink>
+              <NavLink to="/wenlian" className="dropdown-item" onClick={closeDropdown}>
+                文联部
+              </NavLink>
+              <NavLink to="/careerDev" className="dropdown-item" onClick={closeDropdown}>
+                职业发展部
+              </NavLink>
+              <NavLink to="/grad" className="dropdown-item" onClick={closeDropdown}>
+                研究生部
+              </NavLink>
+              <NavLink to="/tech" className="dropdown-item" onClick={closeDropdown}>
+                技术部
+              </NavLink>
+              <NavLink to="/lockerRoom" className="dropdown-item" onClick={closeDropdown}>
+                Locker Room
               </NavLink>
             </div>
           </div>

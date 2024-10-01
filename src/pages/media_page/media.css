@@ -1,0 +1,214 @@
+/* 全局样式 */
+.media-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  media-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.8s ease; /* 修改放大缩小节奏 */
+  }
+  
+  /* 海报部分 */
+  .media-title-section {
+    position: relative;
+    height: 80vh;
+    background-color: #ffffff;
+    /* overflow: hidden; */
+  }
+  
+  .media-title-image {
+    width: 50pc;
+    height: 30pc;
+    object-fit: cover;
+    position: relative;
+    /* //margin-top: 2pc; */
+    margin-left: 2pc;
+    border-radius: 2pc;
+  }
+  
+  .media-logo-image {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 200px;
+    height: auto;
+  }
+  
+  .media-title-text {
+    position: relative;
+    color: rgb(211, 46, 46);
+    z-index: 1;
+    margin: 9pc;
+  }
+  
+  .media-title-text h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    text-shadow: 
+    -2px -2px 0 #fff,  /* 左上白色阴影 */
+    2px -2px 0 #fff,   /* 右上白色阴影 */
+    -2px 2px 0 #fff,   /* 左下白色阴影 */
+    4px 4px 0 #fff; 
+  }
+  
+  .media-title-text p {
+    font-size: 2rem;
+    margin-bottom: 400px;
+    font-weight: bold; /* 加粗 */
+    font-weight: 700; 
+    text-shadow: 
+    -1px -1px 0 #fff,  /* 左上白色阴影 */
+    1px -1px 0 #fff,   /* 右上白色阴影 */
+    -1px 1px 0 #fff,   /* 左下白色阴影 */
+    1px 1px 0 #fff; 
+    
+  }
+  
+  /* 文字介绍部分 */
+  .media-text-section {
+    min-height: 90vh;
+    background-color: #ebecd9;
+    color: white;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .media-text-content h2 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+  }
+  
+  .media-text-content p {
+    max-width: 800px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 100px;
+    font-weight: bold; /* 加粗 */
+    font-weight: 700; 
+  }
+
+  .media-text2-section {
+    position: relative;
+    height: 80vh;
+    background-color: #b94242;
+    /* overflow: hidden; */
+  }
+  
+  /* 部长介绍部分 */
+  .m-leader-section {
+    background-color: #faf9f9;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .m-leader-text {
+    position: relative;
+    color: rgb(211, 46, 46);
+    z-index: 1;
+    margin: 9pc;
+  }
+  
+  .m-leader-image {
+    width: 70%;
+    height: auto;
+    box-shadow: 0 5px 20px rgba(235, 234, 234, 0.3);
+    bottom:0;
+  }
+  
+  .m-leader-section-down {
+    background-color: #faf9f9;
+    height: 10vh;
+    display: flex;
+  }
+
+  .m-leader-section-down h2{
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  
+
+  /* 联系部分 */
+  .media-contact-section {
+    min-height: 50vh;
+    background-color: #f0f0f0;
+    color: rgb(81, 81, 81);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .media-contact-image {
+    left: 10px;
+    top: 10px;
+    width: 20%;
+    height: 20%;
+
+  }
+  
+  .media-contact-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .media-contact-content p {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    color:rgb(81, 81, 81);
+    /* font-weight: bold;  */
+    font-weight: 700; 
+  }
+  
+
+  .about-page section {
+    transform: translateZ(0); 
+    will-change: transform;
+  }
+  
+  .hero-section {
+    perspective: 1000px;
+  }
+  
+  .text-section,
+  .photo-section,
+  .contact-section {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  .text-section {
+    transform: translateY(50px);
+  }
+  
+  .photo-section {
+    transform: translateY(-50px);
+  }
+  
+  .contact-section {
+    transform: translateY(80px);
+  }
+  
+  .about-page section:hover {
+    transform: translateY(0) scale(1.05); /* 鼠标悬停时错位回到原位置并轻微放大 */
+    transition: transform 1s ease; /* 缓慢的放大缩小节奏 */
+  }
+  
+  /* 页面滚动时的错位滚动 */
+  .about-page section {
+    transition: transform 0.8s ease; /* 控制滚动时的动态节奏 */
+  }
