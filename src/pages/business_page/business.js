@@ -43,23 +43,6 @@ const Business = () => {
         </div>
       </section>
 
-      <section className="b-leader-section">
-        <div className="b-leader-text">
-          <h1>部长介绍</h1>
-          {/* 加入部长信息 */}
-          <p>加入部长照片和介绍</p>
-        </div>
-       
-      </section>
-
-      <section className="business-contact-section">
-        <div className="business-contact-content">
-          <h2>联系信息</h2>
-          <img className="business-contact-image" src={contactQR}></img>
-          <p>商业来稿请发送至uiuccssabizdept@gmail.com, 投稿相关问题请回复‘文稿’提取详细说明或私信公众号</p>
-          {/* <p>欢迎联系我们获取更多信息！</p> */}
-        </div>
-      </section>
     </div>
   );
 };
