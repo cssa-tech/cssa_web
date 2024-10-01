@@ -11,6 +11,13 @@ import Apply from "./pages/apply/apply";
 import Events from "./pages/events/events";
 import NewEvent from "./pages/new_event/new_event";
 import Resources from "./pages/resources/resources";
+import Wenti from "./pages/wenti_page/wenti";
+import CareerDev from "./pages/careerDev_page/careerDev";
+import Grad from "./pages/grad_page/grad";
+import LockerRoom from "./pages/lockerRoom_page/lockerRoom";
+import Tech from "./pages/tech_page/tech";
+import Wenlian from "./pages/wenlian_page/wenlian";
+import Hr from "./pages/hr_page/hr";
 
 const AppRoutes = () => {
   // Check if the current path is the home page
@@ -32,6 +39,13 @@ const AppRoutes = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/new_event" element={<NewEvent />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path = "/Hr" element={<Hr />}/>
+            <Route path = "/Wenti" element={<Wenti />}/>
+            <Route path = "/Wenlian" element={<Wenlian />}/>
+            <Route path = "/CareerDev" element={<CareerDev />}/>
+            <Route path = "/Grad" element={<Grad />}/>
+            <Route path = "/Tech" element={<Tech />}/>
+            <Route path = "/LockerRoom" element={<LockerRoom />}/>
             {/* Define other routes that you need */}
           </Routes>
         </main>
