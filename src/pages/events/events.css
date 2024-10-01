@@ -9,7 +9,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: #ffffff;
 }
   
 .right-panel {
@@ -19,7 +18,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
 }
   
 .right-panel-header {
@@ -34,7 +32,7 @@
     max-width: 750px;
     margin-bottom: 40px;
 }
-  
+
 .rbc-agenda-date-cell {
     color: #a62639;
     white-space: normal;
@@ -46,7 +44,7 @@
 }
 
 .calender-event-content {
-    color: #a62639;
+    color: #ff4848;
     white-space: normal;
 }
 
