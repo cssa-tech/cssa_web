@@ -15,7 +15,11 @@ event_list = [
     ['CSSA 招新',
      tz.localize(datetime(2024, 9, 4, 17)).astimezone(utc),
      tz.localize(datetime(2024, 9, 4, 21)).astimezone(utc),
-     'https://mp.weixin.qq.com/s/sD5wIpoXmMAngimCHeGJ4Q', 0, 1, 1]
+     'https://mp.weixin.qq.com/s/sD5wIpoXmMAngimCHeGJ4Q', 0, 1, 1],
+    ['研究生部 桌游之夜',
+     tz.localize(datetime(2024, 10, 6, 18, 30)).astimezone(utc),
+     tz.localize(datetime(2024, 10, 6, 23, 59)).astimezone(utc),
+     'https://mp.weixin.qq.com/s/Zed1gEVAtIHytEZILmHvWQ', 0, 1, 0],
 ]
 
 for event in event_list:
