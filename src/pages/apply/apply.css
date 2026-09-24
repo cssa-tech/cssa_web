@@ -1,0 +1,60 @@
+.apply_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.dept_label_like {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.9rem;
+  font-family: var(--display-font);
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--ink-color);
+}
+.apply_grid .todo { min-height: 7rem; }
+
+.apply_depts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.apply_depts li { border-bottom: 1px solid var(--line-color); }
+.apply_dept {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0.25rem;
+  color: var(--ink-color);
+}
+.apply_dept:hover { color: var(--first-color); }
+.apply_dept_name { font-family: var(--display-font); font-size: 1.15rem; font-weight: 600; }
+.apply_dept_en {
+  margin-left: 0.75rem;
+  font-family: var(--ui-font);
+  font-size: 0.8rem;
+  color: var(--ink-color-faint);
+}
+.apply_dept_more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  color: var(--ink-color-faint);
+}
+.apply_dept:hover .apply_dept_more { color: var(--first-color); }
+
+.apply_faq {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 760px) {
+  .apply_grid, .apply_depts, .apply_faq { grid-template-columns: 1fr; }
+  .apply_dept_en { display: none; }
+}

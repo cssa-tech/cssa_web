@@ -1,11 +1,6 @@
 import React from "react";
+import DepartmentPage from "../department/DepartmentPage";
 
-const Wenlian = () => {
-  return (
-    <div>
-      <p>文联部页面</p>
-    </div>
-  );
-};
+const Wenlian = () => <DepartmentPage slug="wenlian" />;
 
 export default Wenlian;

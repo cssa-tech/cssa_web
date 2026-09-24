@@ -1,11 +1,6 @@
 import React from "react";
+import DepartmentPage from "../department/DepartmentPage";
 
-const Shiwu = () => {
-  return (
-    <div>
-      <p>事务部页面</p>
-    </div>
-  );
-};
+const Shiwu = () => <DepartmentPage slug="shiwu" />;
 
 export default Shiwu;
