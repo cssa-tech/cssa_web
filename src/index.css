@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,15 +7,36 @@
 }
 
 :root {
-  --header-height: 3.5rem;
+  --header-height: 4.5rem;
+  --container-width: 76rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* brand */
   --first-color: #af2e25;
-  --title-color: hsl(0, 0%, 95%);
-  --text-color: hsl(0, 0%, 75%);
-  --background-color: #9DBDC6;
-  --background-color-secondary: #DAEAEF;
-  --body-color: hsl(0, 0%, 95%);
-  --body-font: "Montserrat", sans-serif;
-  --second-font: "Dancing Script", cursive;
+  --first-color-dark: #8f241d;
+  --second-color: #8a4530;
+
+  /* neutrals, tinted slightly toward the brand red */
+  --ink-color: #1f1a19;
+  --ink-color-soft: #5f5654;
+  --ink-color-faint: #978d8a;
+  --line-color: #e9e4e2;
+  --surface-color: #f6f3f2;
+  --paper-color: #ffffff;
+  --dark-color: #1c1716;
+
+  /* kept for the inner pages that still use them */
+  --title-color: #f2f2f2;
+  --text-color: #5f5654;
+  --background-color: #6e2f1f;
+  --background-color-secondary: #7d3a26;
+  --body-color: #ffffff;
+
+  --display-font: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --body-font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --ui-font: "Manrope", "Noto Sans SC", "PingFang SC", sans-serif;
+  --second-font: var(--display-font);
+
   --h2-font-size: 1.25rem;
   --small-font-size: 0.813rem;
   --font-semi-bold: 600;
@@ -25,9 +46,9 @@
 
 body,html, #root {
   background-color: var(--body-color);
-  color: var(--text-color);
+  color: var(--ink-color);
   font-family: var(--body-font);
-  /* height: 100%; */
+  -webkit-font-smoothing: antialiased;
 }
 
 ul {

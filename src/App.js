@@ -1,7 +1,10 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import NavbarHook from "./NavbarHook/NavbarHook";
+import SiteFooter from "./components/SiteFooter";
+import ScrollManager from "./components/ScrollManager";
+import "./components/layout.css";
 import Home from "./pages/Home";
 import Shiwu from "./pages/shiwu_page/shiwu";
 import Media from "./pages/media_page/media";
@@ -12,12 +15,9 @@ import Events from "./pages/events/events";
 import NewEvent from "./pages/new_event/new_event";
 import Resources from "./pages/resources/resources";
 import Wenti from "./pages/wenti_page/wenti";
-import CareerDev from "./pages/careerDev_page/careerDev";
-import Grad from "./pages/grad_page/grad";
-import LockerRoom from "./pages/lockerRoom_page/lockerRoom";
-import Tech from "./pages/tech_page/tech";
 import Wenlian from "./pages/wenlian_page/wenlian";
 import Hr from "./pages/hr_page/hr";
+import StudentDev from "./pages/studentDev_page/studentDev";
 
 const AppRoutes = () => {
   // Check if the current path is the home page
@@ -42,13 +42,16 @@ const AppRoutes = () => {
             <Route path = "/Hr" element={<Hr />}/>
             <Route path = "/Wenti" element={<Wenti />}/>
             <Route path = "/Wenlian" element={<Wenlian />}/>
-            <Route path = "/CareerDev" element={<CareerDev />}/>
-            <Route path = "/Grad" element={<Grad />}/>
-            <Route path = "/Tech" element={<Tech />}/>
-            <Route path = "/LockerRoom" element={<LockerRoom />}/>
+            <Route path = "/StudentDev" element={<StudentDev />}/>
+            {/* 职业发展部、研究生部、技术部已合并为学生发展部 */}
+            <Route path = "/CareerDev" element={<Navigate to="/studentDev" replace />}/>
+            <Route path = "/Grad" element={<Navigate to="/studentDev" replace />}/>
+            <Route path = "/Tech" element={<Navigate to="/studentDev" replace />}/>
             {/* Define other routes that you need */}
           </Routes>
+          <SiteFooter />
         </main>
+        <ScrollManager />
       </div>
     </div>
   );

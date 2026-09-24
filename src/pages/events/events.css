@@ -1,72 +1,172 @@
-.app-container {
-    display: flex;
-}
-  
-.left-panel {
-    flex: 1;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-  
-.right-panel {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-  
-.right-panel-header {
-    margin-bottom: 40px;
-    color: #a62639;
-    font-weight: bold;
-    font-size: 24px;
-}
-  
-.event-cover {
-    width: 100%;
-    max-width: 750px;
-    margin-bottom: 40px;
+/* =========================================================
+   Events page
+   ========================================================= */
+
+.events_layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
 }
 
-.rbc-agenda-date-cell {
-    color: #a62639;
-    white-space: normal;
+.ev_reset {
+  font-family: inherit;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
 }
 
-.rbc-agenda-time-cell {
-    color: #a62639;
-    white-space: normal;
+/* ---------- List ---------- */
+.ev_list { margin: 0; padding: 0; list-style: none; }
+.ev_item {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line-color);
+}
+.ev_date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.2rem;
+  line-height: 1.1;
+}
+.ev_month { font-size: 0.8rem; color: var(--first-color); }
+.ev_day {
+  margin-top: 0.2rem;
+  font-family: var(--display-font);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ink-color);
+  font-variant-numeric: tabular-nums;
+}
+.ev_weekday { margin-top: 0.25rem; font-size: 0.78rem; color: var(--ink-color-faint); }
+.ev_cover {
+  display: block;
+  width: 100%;
+  max-height: 14rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background-color: var(--line-color);
+}
+.ev_title {
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink-color);
+}
+.ev_time { margin-top: 0.35rem; font-size: 0.92rem; color: var(--ink-color-soft); }
+.ev_link { margin-top: 0.85rem; }
+
+.ev_empty {
+  padding-block: 2.5rem;
+  color: var(--ink-color-soft);
+  line-height: 1.85;
+}
+.ev_empty_title {
+  margin-bottom: 0.35rem;
+  font-family: var(--display-font);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink-color);
 }
 
-.calender-event-content {
-    color: #ff4848;
-    white-space: normal;
+/* ---------- Calendar (react-big-calendar overrides) ---------- */
+.events_calendar .rbc-calendar {
+  font-family: var(--body-font);
+  color: var(--ink-color);
 }
+.events_calendar .rbc-toolbar {
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0;
+}
+.events_calendar .rbc-toolbar-label {
+  font-family: var(--display-font);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink-color);
+}
+.events_calendar .rbc-btn-group button {
+  padding: 0.4rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-color-soft);
+  background: #fff;
+  border-color: var(--line-color);
+  box-shadow: none;
+}
+.events_calendar .rbc-btn-group button:hover { color: var(--ink-color); background-color: var(--surface-color); }
+.events_calendar .rbc-btn-group button.rbc-active,
+.events_calendar .rbc-btn-group button.rbc-active:hover,
+.events_calendar .rbc-btn-group button.rbc-active:focus {
+  color: #fff;
+  background-color: var(--ink-color);
+  border-color: var(--ink-color);
+  box-shadow: none;
+}
+.events_calendar .rbc-btn-group > button:first-child:not(:last-child) { border-radius: 2px 0 0 2px; }
+.events_calendar .rbc-btn-group > button:last-child:not(:first-child) { border-radius: 0 2px 2px 0; }
 
-.rbc-toolbar {
-    padding: 10px;
+.events_calendar .rbc-month-view,
+.events_calendar .rbc-agenda-view table.rbc-agenda-table {
+  border-color: var(--line-color);
+  border-radius: 0;
 }
-  
-.rbc-toolbar-label {
-    font-size: 24px;
-    font-weight: bold;
-    color: #a62639;
+.events_calendar .rbc-header {
+  padding: 0.6rem 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-color-faint);
+  border-color: var(--line-color);
 }
-  
-.rbc-header {
-    color: #a62639;
+.events_calendar .rbc-month-row + .rbc-month-row,
+.events_calendar .rbc-day-bg + .rbc-day-bg { border-color: var(--line-color); }
+.events_calendar .rbc-date-cell {
+  padding: 0.35rem 0.5rem;
+  text-align: right;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
-  
-.rbc-date-cell {
-    text-align: center;
-    padding: 5px;
+.events_calendar .rbc-off-range { color: #cbc3c0; }
+.events_calendar .rbc-off-range-bg { background-color: var(--surface-color); }
+.events_calendar .rbc-today { background-color: #fbf1ef; }
+.events_calendar .rbc-now .rbc-button-link { font-weight: 700; color: var(--first-color); }
+.events_calendar .rbc-day-bg:hover { background-color: var(--surface-color); cursor: pointer; }
+.events_calendar .rbc-selected-cell { background-color: #f3e3e0; }
+
+.events_calendar .rbc-event,
+.events_calendar .rbc-day-slot .rbc-background-event {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.78rem;
+  color: #fff;
+  background-color: var(--first-color);
+  border-radius: 2px;
 }
-  
-.rbc-day-bg:hover {
-    background-color: #f7f7f7;
+.events_calendar .rbc-event.rbc-selected { background-color: var(--first-color-dark); }
+.events_calendar .rbc-show-more { color: var(--first-color); font-size: 0.78rem; }
+
+.events_calendar .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  font-weight: 500;
+  color: var(--ink-color-faint);
+  border-color: var(--line-color);
+}
+.events_calendar .rbc-agenda-view table.rbc-agenda-table tbody > tr > td {
+  padding: 0.6rem 0.75rem;
+  border-color: var(--line-color);
+}
+.events_calendar .rbc-agenda-date-cell,
+.events_calendar .rbc-agenda-time-cell { color: var(--ink-color-soft); white-space: normal; }
+.events_calendar .rbc-agenda-empty { padding: 1rem 0; color: var(--ink-color-soft); }
+
+@media screen and (max-width: 900px) {
+  .events_layout { grid-template-columns: 1fr; }
+  .events_calendar { order: -1; }
+}
+@media screen and (max-width: 480px) {
+  .events_calendar .rbc-toolbar { flex-direction: column; align-items: flex-start; }
 }

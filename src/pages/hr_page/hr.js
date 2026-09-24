@@ -1,11 +1,6 @@
 import React from "react";
+import DepartmentPage from "../department/DepartmentPage";
 
-const Hr = () => {
-  return (
-    <div>
-      <p>人力资源部页面</p>
-    </div>
-  );
-};
+const Hr = () => <DepartmentPage slug="hr" />;
 
 export default Hr;

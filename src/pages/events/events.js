@@ -1,141 +1,171 @@
-// Todo
-// phone view
-
-import React, { useState, useEffect } from "react";
-import "./events.css";
-
+import React, { useEffect, useMemo, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import "moment/locale/zh-cn";
 import axios from "axios";
+import { FiArrowUpRight } from "react-icons/fi";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import PageHeader from "../../components/PageHeader";
+import "./events.css";
 
-const tmp_server_url = "http://127.0.0.1:5000";
+// TODO: point this at the deployed backend
+const SERVER_URL = "http://127.0.0.1:5000";
 
+moment.locale("zh-cn");
 const localizer = momentLocalizer(moment);
 
+const CAL_MESSAGES = {
+  today: "今天",
+  previous: "上一页",
+  next: "下一页",
+  month: "月",
+  week: "周",
+  day: "日",
+  agenda: "列表",
+  date: "日期",
+  time: "时间",
+  event: "活动",
+  noEventsInRange: "这段时间没有活动",
+  showMore: (n) => `还有 ${n} 个`,
+};
+
+const formatRange = (start, end) => {
+  const s = moment(start);
+  const e = moment(end);
+  if (s.isSame(e, "day")) return `${s.format("M月D日 dddd HH:mm")} – ${e.format("HH:mm")}`;
+  return `${s.format("M月D日 HH:mm")} – ${e.format("M月D日 HH:mm")}`;
+};
+
+const EventItem = ({ event }) => {
+  const s = moment(event.start);
+  return (
+    <li className="ev_item">
+      <div className="ev_date" aria-hidden="true">
+        <span className="ev_month">{s.format("M月")}</span>
+        <span className="ev_day">{s.format("D")}</span>
+        <span className="ev_weekday">{s.format("ddd")}</span>
+      </div>
+      <div className="ev_body">
+        {event.has_cover ? (
+          <img
+            className="ev_cover"
+            src={`${SERVER_URL}/api/event/serve_cover/${event.event_id}.png`}
+            alt=""
+            loading="lazy"
+          />
+        ) : null}
+        <h3 className="ev_title">{event.title}</h3>
+        <p className="ev_time">{formatRange(event.start, event.end)}</p>
+        {event.url && (
+          <a className="text_link ev_link" href={event.url} target="_blank" rel="noreferrer">
+            活动详情 <FiArrowUpRight />
+          </a>
+        )}
+      </div>
+    </li>
+  );
+};
+
 const Events = () => {
-  const [event_list, setEventList] = useState([]);
   const [events, setEvents] = useState([]);
-  const [selected_events, setSelectedEvents] = useState([]);
+  const [status, setStatus] = useState("loading"); // loading | ready | error
+  const [range, setRange] = useState(null); // { start, end } picked on the calendar
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(tmp_server_url + "/api/event/list");
-        console.log(response);
-        setEventList(response.data["data"]);
+        const response = await axios.get(`${SERVER_URL}/api/event/list`);
+        const rows = response.data?.data || [];
+        setEvents(
+          rows.map((event) => ({
+            event_id: event[0],
+            title: event[1],
+            start: new Date(event[2]),
+            end: new Date(event[3]),
+            url: event[4],
+            has_cover: event[7],
+          }))
+        );
+        setStatus("ready");
       } catch (err) {
-        console.log(err);
+        console.error(err);
+        setStatus("error");
       }
     };
     fetchEvents();
   }, []);
 
-  useEffect(() => {
-    var tmp_events = event_list.map((event) => ({
-      event_id: event[0],
-      title: event[1],
-      start: new Date(event[2]),
-      end: new Date(event[3]),
-      url: event[4],
-      has_cover: event[7],
-    }));
+  const shown = useMemo(() => {
+    const list = range
+      ? events.filter((e) => e.start <= range.end && e.end >= range.start)
+      : events.filter((e) => e.end >= new Date());
+    return [...list].sort((a, b) => a.start - b.start);
+  }, [events, range]);
 
-    setEvents(tmp_events);
-  }, [event_list]);
-
-  useEffect(() => {
-    console.log(events);
-
-    var tmp_events = events.filter((event) => {
-      const now = new Date();
-      return event.end >= now;
-    });
-
-    setSelectedEvents(tmp_events);
-  }, [events]);
-
-  const select_date_handler = ({ start, end }) => {
-    console.log(`Selected from ${start} to ${end}`);
-    var tmp_events = events.filter((event) => {
-      const start_time = new Date(start);
-      const end_time = new Date(end);
-      return (
-        (event.start >= start_time && event.end <= end_time) ||
-        (event.start <= start_time && event.end >= start_time) ||
-        (event.start <= end_time && event.end >= end_time)
-      );
-    });
-
-    setSelectedEvents(tmp_events);
-  };
-
-  const calender_event = ({ event }) => {
-    return (
-      <div onClick={() => setSelectedEvents([event])}>
-        <h>{event.title}</h>
-      </div>
-    );
-  };
+  const listTitle = range
+    ? moment(range.start).isSame(moment(range.end).subtract(1, "ms"), "day")
+      ? `${moment(range.start).format("M月D日")}的活动`
+      : `${moment(range.start).format("M月D日")} – ${moment(range.end).subtract(1, "ms").format("M月D日")}的活动`
+    : "即将举行";
 
   return (
-    <div className="app-container">
-      <div className="left-panel">
-        <Calendar
-          localizer={localizer}
-          events={events}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 600, width: "100%" }}
-          views={["day", "week", "month", "agenda"]}
-          defaultView="month"
-          toolbar={true}
-          selectable
-          onSelectSlot={select_date_handler}
-          popup
-          components={{
-            event: calender_event,
-          }}
-        />
-      </div>
+    <div className="page events_page">
+      <PageHeader title="活动预告" en="Events" />
 
-      <div className="right-panel">
-        <h2 className="right-panel-header">Recent Events</h2>
-        {selected_events.map((event, index) => (
-          <a key={index} href={event.url} target="_blank" rel="noreferrer">
-            {event.has_cover ? (
-              <img
-                src={
-                  tmp_server_url +
-                  `/api/event/serve_cover/${event.event_id}.png`
-                }
-                alt={event.title}
-                className="event-cover"
-              />
-            ) : (
-              <div style={{ position: "relative" }}>
-                <img
-                  src={tmp_server_url + "/api/event/serve_cover/0.png"}
-                  alt={event.title}
-                  className="event-cover"
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    color: "black",
-                    fontSize: "32px",
-                  }}
-                >
-                  {event.title}
-                </div>
+      <section className="page_section">
+        <div className="container events_layout">
+          <div className="events_list_col">
+            <div className="block_head">
+              <h2 className="block_title">{listTitle}</h2>
+              {range && (
+                <button type="button" className="text_link ev_reset" onClick={() => setRange(null)}>
+                  显示全部即将举行
+                </button>
+              )}
+            </div>
+
+            {status === "loading" && <p className="ev_empty">正在加载活动…</p>}
+            {status === "error" && (
+              <div className="ev_empty">
+                <p className="ev_empty_title">活动信息暂时无法加载</p>
+                <p>请稍后再试，也可以关注 CSSA 公众号获取最新活动消息。</p>
               </div>
             )}
-          </a>
-        ))}
-      </div>
+            {status === "ready" && shown.length === 0 && (
+              <div className="ev_empty">
+                <p className="ev_empty_title">{range ? "这段时间没有活动" : "暂时没有即将举行的活动"}</p>
+                <p>新活动发布后会显示在这里，也可以关注 CSSA 公众号获取最新消息。</p>
+              </div>
+            )}
+            {shown.length > 0 && (
+              <ul className="ev_list">
+                {shown.map((e) => (
+                  <EventItem key={e.event_id} event={e} />
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="events_calendar">
+            <Calendar
+              localizer={localizer}
+              culture="zh-cn"
+              messages={CAL_MESSAGES}
+              formats={{ dateFormat: "D", monthHeaderFormat: "YYYY年M月" }}
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              views={["month", "agenda"]}
+              defaultView="month"
+              selectable
+              popup
+              onSelectSlot={({ start, end }) => setRange({ start, end })}
+              onSelectEvent={(e) => setRange({ start: moment(e.start).startOf("day").toDate(), end: moment(e.start).endOf("day").toDate() })}
+              style={{ height: 560 }}
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
